@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speech Translator - Home</title>
+
+  <!-- 🌷 Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background:#FAF0E6;
+      color: #F5DEB3;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5em;
+      margin-bottom: 5px;
+      font-weight: 700;
+      color: #2c003e;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #5a005a;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    /* ☁️ Cloud container */
+    .cloud-box {
+      background: white;
+      padding: 50px 60px;
+      border-radius: 60px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      border: 2px solid rgba(255, 192, 203, 0.5);
+      animation: softFloat 6s ease-in-out infinite;
+    }
+
+    .cloud-box h3 {
+      font-size: 1.4em;
+      color: #4b0049;
+      margin-bottom: 25px;
+    }
+
+    .btn-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      background-color: #ffffff;
+      color: #7b1fa2;
+      border: 2px solid #ce93d8;
+      padding: 15px 25px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 💜 Light Purple Hover */
+    button:hover {
+      background-color: #e1bee7;
+      color: #4a0072;
+      transform: scale(1.05);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 14px;
+      color: #2c003e;
+      font-weight: 500;
+    }
+
+    @keyframes softFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Speech Translator</h1>
+  <h2>Your one-stop solution for breaking language barriers </h2>
+
+  <div class="cloud-box">
+    <h3>AI at your service — pick your mode of translation</h3>
+    <div class="btn-container">
+      <button onclick="location.href='speak.html'">🎙 Speak Now</button>
+      <button onclick="location.href='upload.html'"> Upload Audio</button>
+    </div>
+  </div>
+
+  <footer>Made with 💜 by Anshu</footer>
+
+</body>
+</html>

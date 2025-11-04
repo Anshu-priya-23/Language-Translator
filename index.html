@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Translator Frontend</title>
+</head>
+<body style="font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+    <h1 style="color: #007bff;">Your Language Translator</h1>
+    
+    <button id="micButton" style="padding: 10px 20px; font-size: 1.1em; cursor: pointer; background-color: #28a745; color: white; border: none; border-radius: 5px;">
+        🎙️ Speak (Start/Stop Recording)
+    </button>
+    
+    <h2 style="margin-top: 30px; border-bottom: 1px solid #eee; padding-bottom: 10px;">Status & Result:</h2>
+    <div id="status" style="padding: 10px; background-color: #f8f9fa; border-radius: 4px; margin-bottom: 20px;">Ready to record.</div>
+    
+    <div id="output" style="white-space: pre-wrap; background-color: #f1f1f1; padding: 15px; border-radius: 5px;">
+        <!-- Results will appear here -->
+    </div>
+
+    <p style="margin-top: 20px; font-size: 0.8em; color: #666;">Backend URL is running on port 8080.</p>
+
+    <!-- Link to the JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎙️ Speech to Text</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background: #f7f9fc;
+    }
+    h2 {
+      color: #333;
+    }
+    .container {
+      width: 400px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #output {
+      margin-top: 20px;
+      background: #f1f1f1;
+      padding: 15px;
+      border-radius: 10px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎤 Speech-to-Text (Upload or Speak)</h2>
+
+    <!-- Upload Section -->
+    <h3>📁 Upload Audio File</h3>
+    <form id="uploadForm">
+      <input type="file" name="audioFile" accept=".wav,.mp3" required><br><br>
+      <button type="submit">Transcribe File</button>
+    </form>
+
+    <hr>
+
+    <!-- Record Section -->
+    <h3>🎙️ Record Your Voice</h3>
+    <button id="recordBtn">🎤 Start Recording</button>
+    <button id="stopBtn" disabled>⏹ Stop Recording</button>
+
+    <div id="output"></div>
+  </div>
+
+  <script>
+    const uploadForm = document.getElementById('uploadForm');
+    const recordBtn = document.getElementById('recordBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const output = document.getElementById('output');
+    let mediaRecorder;
+    let audioChunks = [];
+
+    // Handle File Upload
+    uploadForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(uploadForm);
+      output.textContent = "⏳ Transcribing...";
+      const response = await fetch('/api/v1/transcribe', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await response.text();
+      output.textContent = "📝 Transcription:\n" + result;
+    });
+
+    // Handle Recording
+    recordBtn.addEventListener('click', async () => {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorder = new MediaRecorder(stream);
+      audioChunks = [];
+
+      mediaRecorder.ondataavailable = event => {
+        audioChunks.push(event.data);
+      };
+
+      mediaRecorder.onstop = async () => {
+        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+        const formData = new FormData();
+        formData.append('audioFile', audioBlob, 'recording.wav');
+
+        output.textContent = "⏳ Transcribing recorded audio...";
+        const response = await fetch('/api/v1/transcribe', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.text();
+        output.textContent = "📝 Transcription:\n" + result;
+      };
+
+      mediaRecorder.start();
+      recordBtn.disabled = true;
+      stopBtn.disabled = false;
+      output.textContent = "🎙️ Recording... speak now!";
+    });
+
+    stopBtn.addEventListener('click', () => {
+      mediaRecorder.stop();
+      recordBtn.disabled = false;
+      stopBtn.disabled = true;
+      output.textContent = "Processing your voice...";
+    });
+  </script>
+</body>
+</html>

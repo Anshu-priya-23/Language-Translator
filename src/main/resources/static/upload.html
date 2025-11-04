@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Upload Audio - Voice Translator</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #e6d4ff; /* 💜 light purple */
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      background-color: white;
+      max-width: 700px;
+      margin: 60px auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #5a189a;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin: 8px;
+    }
+
+    input[type="file"] {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+      font-size: 1rem;
+    }
+
+    #uploadBtn { background-color: #5a189a; }
+    #uploadBtn:hover { background-color: #7c3aed; }
+
+    .result-box {
+      background: #f1e6ff;
+      padding: 15px;
+      border-radius: 10px;
+      min-height: 70px;
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    a {
+      color: #5a189a;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1> Upload Audio File</h1>
+    <p>Upload your audio file to get instant transcription and translation.</p>
+
+    <div>
+      <label>Input Language:</label>
+      <select id="inputLang">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="ta">Tamil</option>
+        <option value="bn">Bengali</option>
+        <option value="pa">Punjabi</option>
+        <option value="fr">French</option>
+        <option value="es">Spanish</option>
+      </select>
+
+      <label>Output Language:</label>
+      <select id="outputLang">
+        <option value="hi">Hindi</option>
+        <option value="en">English</option>
+        <option value="ta">Tamil</option>
+        <option value="bn">Bengali</option>
+        <option value="pa">Punjabi</option>
+        <option value="fr">French</option>
+        <option value="es">Spanish</option>
+      </select>
+    </div>
+
+    <div>
+      <input type="file" id="audioFile" accept="audio/*" />
+      <button id="uploadBtn">Transcribe File</button>
+    </div>
+
+    <div id="uploadStatus" style="margin-top:10px;">No file uploaded yet.</div>
+    <div id="uploadOutput" class="result-box"></div>
+
+    <a href="index.html">⬅️ Back to Home</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
