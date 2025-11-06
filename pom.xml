@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.0</version> <!-- Use a stable version -->
+        <version>3.2.0</version>
         <relativePath/>
     </parent>
 
@@ -24,26 +24,66 @@
 
     <dependencies>
 
-        <!-- Web dependency for REST APIs -->
+        <!-- Spring Boot core web stack -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- For making REST API calls (like Google Translate, LibreTranslate etc.) -->
+        <!-- Reactive web client -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
 
-        <!-- Lombok for clean model and DTO classes -->
+        <!-- ✅ Vosk Speech Recognition -->
+        <dependency>
+            <groupId>org.vosk</groupId>
+            <artifactId>vosk</artifactId>
+            <version>0.3.45</version>
+        </dependency>
+
+        <!-- ✅ JNA (needed by Vosk) -->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna-platform</artifactId>
+            <version>5.14.0</version>
+        </dependency>
+
+        <!-- ✅ Audio decoding for MP3 -->
+        <dependency>
+            <groupId>javazoom</groupId>
+            <artifactId>jlayer</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <!-- JSON Parser -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20230618</version>
+        </dependency>
+
+        <!-- Jakarta annotations -->
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
 
-        <!-- DevTools for live reload in Eclipse -->
+        <!-- DevTools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -51,49 +91,18 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Actuator for monitoring (optional, but useful) -->
+        <!-- Actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- Testing support -->
+        <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-    		<groupId>org.vosk</groupId>
-    		<artifactId>vosk</artifactId>
-    		<version>0.3.45</version>
-		</dependency>
-		<!-- ✅ JNA dependency required by Vosk -->
-<dependency>
-    <groupId>net.java.dev.jna</groupId>
-    <artifactId>jna</artifactId>
-    <version>5.14.0</version>
-</dependency>
-
-<dependency>
-    <groupId>net.java.dev.jna</groupId>
-    <artifactId>jna-platform</artifactId>
-    <version>5.14.0</version>
-</dependency>
-
-<!-- JSON parser for extracting text -->
-	<dependency>
-    		<groupId>org.json</groupId>
-    		<artifactId>json</artifactId>
-    		<version>20230618</version>
-	</dependency>
-
-<!-- Jakarta annotations -->
-	<dependency>
-    	<groupId>jakarta.annotation</groupId>
-    	<artifactId>jakarta.annotation-api</artifactId>
-    	<version>2.1.1</version>
-	</dependency>
 
     </dependencies>
 
